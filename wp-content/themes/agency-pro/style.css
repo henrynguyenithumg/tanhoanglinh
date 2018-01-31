@@ -2305,3 +2305,16 @@ Media Queries
 	}
 
 }
+
+.widget-title {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.agency-pro-home .content .widget {
+    /* background: #fff; */
+    margin-bottom: 80px;
+    padding: 40px;
+}
