@@ -20,11 +20,11 @@
 </div>
 <div id="myModal" class="modal">
 
-  <!-- The Close Button -->
-  <span class="close">&times;</span>
 
   <!-- Modal Content (The Image) -->
   <img class="modal-content" id="img-local">
+  <!-- The Close Button -->
+  <div class="close"></div>
 
   <!-- Modal Caption (Image Text) -->
   <div id="caption"></div>
@@ -100,13 +100,10 @@
 /* The Close Button */
 .close {
     position: absolute;
-    top: calc( 50% - 50px );
-    right: calc( 50% - 35px );
-    color: #00000;
-    font-size: 100px;
-    font-weight: bold;
-    transition: 0.3s;
-    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .close:hover,
