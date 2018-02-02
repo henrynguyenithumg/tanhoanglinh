@@ -77,9 +77,10 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
 
 /* That's all, stop editing! Happy blogging. */
+define('FS_METHOD', 'direct');
 
 /** Absolute path to the WordPress directory. */
 if ( !defined('ABSPATH') )

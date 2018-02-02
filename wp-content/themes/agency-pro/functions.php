@@ -24,12 +24,16 @@ add_theme_support( 'genesis-responsive-viewport' );
 
 //* Enqueue Scripts
 add_action( 'wp_enqueue_scripts', 'agency_load_scripts' );
+
 function agency_load_scripts() {
-
+	wp_enqueue_style( 'bootstrap-style', get_template_directory_uri().'/vendor/bootstrap-4/css/bootstrap.min.css', array(), '4.0.0', 'all');
 	wp_enqueue_script( 'agency-responsive-menu', get_bloginfo( 'stylesheet_directory' ) . '/js/responsive-menu.js', array( 'jquery' ), '1.0.0' );
-
+	// js from jquery
+	wp_enqueue_script( 'jquery-js', get_template_directory_uri() . '/vendor/jquery/js/jquery-3.2.1.min.js');
+	// js from popper
+	wp_enqueue_script( 'popper-js', get_template_directory_uri() . '/vendor/popper/js/popper.min.js');
 	wp_enqueue_style( 'dashicons' );
-
+	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/vendor/bootstrap-4/js/bootstrap.min.js');
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=EB+Garamond|Spinnaker', array(), CHILD_THEME_VERSION );
 
 }
@@ -134,3 +138,7 @@ genesis_register_sidebar( array(
 	'name'        => __( 'Home Bottom', 'agency' ),
 	'description' => __( 'This is the bottom section of the homepage.', 'agency' ),
 ) );
+/**
+ * Add site origin widgets
+ */
+require_once get_template_directory() . '/widgets/widgets.php';
