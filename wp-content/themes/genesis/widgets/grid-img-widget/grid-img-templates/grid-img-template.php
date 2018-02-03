@@ -4,19 +4,14 @@
     <h4 class="title"><?php echo $instance['title'];?></h4>   
         <div class="row images-wrapper">
             <?php foreach ($instance['images'] as $key => $item): ?>
-                <div class="item col-md-<?php echo $instance['width']; ?>" style="background: url(<?php echo wp_get_attachment_url($item['url']) ;?>)" data-url="<?php echo wp_get_attachment_url($item['url']) ;?>">
-                <?php if($item['link']) {?>
-                <a href="<?php echo $item['link'];?>">
-                <?php }?>
+                <div class="item col-md-<?php echo $instance['width']; ?>" 
+                    style="background: url(<?php echo wp_get_attachment_url($item['url']) ;?>)" data-url="<?php echo wp_get_attachment_url($item['url']) ;?>" data-link="<?php echo $item['link'];?>">
                 <?php if($item['msg']) {?>
                     <?php if($item['url']) {?>
                         <div class="text-grid"><?php echo $item['msg'] ;?></div>
                     <?php } else {?>
                         <div class="only-text-grid"><?php echo $item['msg'] ;?></div>
                     <?php }?>
-                <?php }?>
-                <?php if($item['link']) {?>
-                </a>
                 <?php }?>
                 </div>
                     
@@ -27,6 +22,7 @@
 
 
   <!-- Modal Content (The Image) -->
+  <div id="link-goto-project"></div>
   <img class="modal-content" id="img-local">
   <!-- The Close Button -->
   <div class="close"></div>
@@ -36,6 +32,14 @@
 </div>
 <style>
 /* Style the Image Used to Trigger the Modal */
+#link-goto-project {
+    position: fixed;
+    top: calc( 50% - 70px);
+    left: calc( 50% - 110px);
+    z-index: 10;
+    font-size: 48px;
+    font-weight: 600;
+}
 .item{
     position: relative;
     padding: 0;
@@ -151,9 +155,17 @@ var modalImg = document.getElementById("img-local");
 var captionText = document.getElementById("caption");
 $(".item").on('click', event => {
     const url = $(event.currentTarget).data("url");
+    const link = $(event.currentTarget).data("link");
+    console.log(url, link)
     if ( url ) {
         modal.style.display = "block";
         modalImg.src = url;
+        if (link) {
+            console.log(link)
+            $('#link-goto-project').html(`<a href='${link}'>Goto project</a>`);
+        } else {
+            $('#link-goto-project').html('');
+        }
     }
 })
 // Get the <span> element that closes the modal
