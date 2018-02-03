@@ -32,15 +32,21 @@ class Grid_IMG_Widget extends SiteOrigin_Widget
                     'type' => 'text',
                     'label' => __('Title', 'widget-form-fields-text-domain')
                 ),
+                'width' => array(
+                    'type' => 'number',
+                    'label' => __( 'width', 'widget-form-fields-text-domain' ),
+                    'default' => 4
+                ),
+                'height' => array(
+                    'type' => 'number',
+                    'label' => __( 'height', 'widget-form-fields-text-domain' ),
+                    'default' => 220
+                ),
                 'images' => array(
                     'type' => 'repeater',
                     'label' => __( 'Image.' , 'widget-form-fields-text-domain' ),
                     'item_name'  => __( 'Image list', 'siteorigin-widgets' ),
                     'fields' => array(
-                        'width' => array(
-                            'type' => 'number',
-                            'label' => __( 'width', 'widget-form-fields-text-domain' )
-                        ),
                         'msg' => array(
                             'type' => 'textarea',
                             'label' => __( 'Message', 'widget-form-fields-text-domain' )

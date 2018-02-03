@@ -4,16 +4,15 @@
     <h4 class="title"><?php echo $instance['title'];?></h4>   
         <div class="row images-wrapper">
             <?php foreach ($instance['images'] as $key => $item): ?>
-                <?php if($item['url']) {?>
-                <div class="img-item col-md-<?php echo $item['width']; ?>">
-                    <img id="img-grid-<?php echo $item['width']; ?>" class="img-grid" src="<?php echo wp_get_attachment_url($item['url']) ;?>" alt="<?php echo get_the_title($item['url'])
-;?>" />
-                </div>
-                <?php } else {?>
-                <div class="text-item col-md-<?php echo $item['width']; ?>">
-                    <div class="text-grid"><?php echo $item['msg'] ;?></div>
-                </div>
+                <div class="item col-md-<?php echo $instance['width']; ?>" style="background: url(<?php echo wp_get_attachment_url($item['url']) ;?>)" data-url="<?php echo wp_get_attachment_url($item['url']) ;?>">
+                <?php if($item['msg']) {?>
+                    <?php if($item['url']) {?>
+                        <div class="text-grid"><?php echo $item['msg'] ;?></div>
+                    <?php } else {?>
+                        <div class="only-text-grid"><?php echo $item['msg'] ;?></div>
+                    <?php }?>
                 <?php }?>
+                </div>
                     
             <?php endforeach;?>
         </div>
@@ -31,26 +30,42 @@
 </div>
 <style>
 /* Style the Image Used to Trigger the Modal */
-.text-grid{
-    padding: 5px;
-    background: rgba(0, 0, 0, 0.3);
+.item{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: <?php echo 220;?>px;
+}
+.only-text-grid{
+    position: absolute;
+    padding: 5px 15px;
+    background: #ffffff;
+    color: #000;
     height: 100%;
+    width: 100%;
+    transition: 0.1s;
+    opacity: 1
 }
-.text-item{
-    padding: 5px;
-    margin: 0;
-}
-.img-item{
-    padding: 5px;
-    margin: 0;
+.text-grid{
+    position: absolute;
+    padding: 5px 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    transition: 0.1s;
+    opacity: 0
 }
 .img-grid {
-    border-radius: 4px;
+    position: absolute;
     cursor: pointer;
     transition: 0.3s;
 }
-
-.img-grid:hover {opacity: 0.7;}
+.only-text-grid:hover {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+}
+.text-grid:hover {opacity: 1;}
 
 /* The Modal (background) */
 .modal {
@@ -127,16 +142,12 @@ var modal = document.getElementById('myModal');
 // var img = document.getElementById('myImg');
 var modalImg = document.getElementById("img-local");
 var captionText = document.getElementById("caption");
-// img.onclick = function(){
-//     modal.style.display = "block";
-//     modalImg.src = this.src;
-//     captionText.innerHTML = this.alt;
-// }
-$(".img-grid").on('click', event => {
-    const img = $(event.target); 
-    modal.style.display = "block";
-    modalImg.src = img.attr('src');
-    captionText.innerHTML = mg.attr('alt');
+$(".item").on('click', event => {
+    const url = $(event.currentTarget).data("url");
+    if ( url ) {
+        modal.style.display = "block";
+        modalImg.src = url;
+    }
 })
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
