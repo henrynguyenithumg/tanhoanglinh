@@ -51,6 +51,10 @@ class Grid_IMG_Widget extends SiteOrigin_Widget
                             'type' => 'textarea',
                             'label' => __( 'Message', 'widget-form-fields-text-domain' )
                         ),
+                        'link' => array(
+                            'type' => 'link',
+                            'label' => __( 'Redirect when click', 'widget-form-fields-text-domain' )
+                        ),
                         'url' => array(
                             'type' => 'media',
                             'label' => __('Hyperlink', 'widget-form-fields-text-domain'),

@@ -5,12 +5,18 @@
         <div class="row images-wrapper">
             <?php foreach ($instance['images'] as $key => $item): ?>
                 <div class="item col-md-<?php echo $instance['width']; ?>" style="background: url(<?php echo wp_get_attachment_url($item['url']) ;?>)" data-url="<?php echo wp_get_attachment_url($item['url']) ;?>">
+                <?php if($item['link']) {?>
+                <a href="<?php echo $item['link'];?>">
+                <?php }?>
                 <?php if($item['msg']) {?>
                     <?php if($item['url']) {?>
                         <div class="text-grid"><?php echo $item['msg'] ;?></div>
                     <?php } else {?>
                         <div class="only-text-grid"><?php echo $item['msg'] ;?></div>
                     <?php }?>
+                <?php }?>
+                <?php if($item['link']) {?>
+                </a>
                 <?php }?>
                 </div>
                     
@@ -35,6 +41,7 @@
     padding: 0;
     margin: 0;
     height: <?php echo 220;?>px;
+    background-size: cover !important;
 }
 .only-text-grid{
     position: absolute;
