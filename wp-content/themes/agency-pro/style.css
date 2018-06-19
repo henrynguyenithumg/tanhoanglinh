@@ -1267,7 +1267,7 @@ Content Area
 	content: " ";
 	display: inline-block;
 	border-top: 2px solid #fff;
-	padding-bottom: 4px;
+	padding-bottom: 0.8rem !important;
 	width: 15%;
 }
 
@@ -1680,7 +1680,7 @@ Footer Widgets
 .footer-widgets {
 	background-color: #fff;
 	border-top: 1px solid #ececec;
-	color: #999;
+	color: #000;
 	clear: both;
 	padding: 60px 0 36px;
 }
@@ -2319,4 +2319,21 @@ Media Queries
     /* background: #fff; */
     margin-bottom: 80px;
     padding: 40px;
+}
+@font-face {
+ font-family: lato-thin;
+ src: url(./fonts/lato-regular.ttf);
+ font-weight: normal;
+ }
+@font-face {
+ font-family: lato;
+ src: url(./fonts/lato-black.ttf);
+ font-weight: normal;
+ }
+body,div,span,p,header,head,foot,footer,h3,h4,h5,h6{
+font-family: lato-thin;
+}
+h1,h2{
+font-family: lato !important;
+
 }

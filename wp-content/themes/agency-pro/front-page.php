@@ -92,5 +92,7 @@ function agency_home_excerpt_length( $length ) {
 	return 35;
 
 }
-
+?>
+<?php
 genesis();
+
