@@ -973,7 +973,7 @@ Site Header
 .site-header {
 	background-color: #333;
 	left: 0;
-	min-height: 80px;
+	min-height: 60px;
 	position: fixed;
 	top: 0;
 	width: 100%;
@@ -1048,13 +1048,15 @@ Site Header
 
 .header-image .site-title a {
 	float: left;
-	min-height: 100px;
+	min-height: 50px;
 	width: 100%;
 }
 
 /* Widget Area
 --------------------------------------------- */
-
+.nav-header ul{
+	margin: 0;
+}
 .site-header .widget-area {
 	float: right;
 	text-align: right;

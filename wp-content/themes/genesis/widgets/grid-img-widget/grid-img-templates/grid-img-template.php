@@ -44,7 +44,7 @@
     position: relative;
     padding: 0;
     margin: 0;
-    height: <?php echo 220;?>px;
+    height: <?php echo $instance['images'];?>px;
     background-size: cover !important;
 }
 .only-text-grid{
